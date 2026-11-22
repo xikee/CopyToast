@@ -1,0 +1,11 @@
+.DS_Store
+.workbuddy/
+
+# 构建产物
+CopyToast.app/
+build/CopyToast.app/
+build/CopyToastTests
+build/gen_icon
+build/icons.iconset/
+build/preview/
+Resources/AppIcon.icns
