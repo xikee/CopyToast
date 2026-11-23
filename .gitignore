@@ -9,3 +9,4 @@ build/gen_icon
 build/icons.iconset/
 build/preview/
 Resources/AppIcon.icns
+dist/

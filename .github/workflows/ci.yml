@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - name: 运行回归测试
+        run: ./scripts/test.sh
+      - name: 构建通用版
+        run: ./scripts/build.sh --dmg
+      - name: 校验产物架构与签名
+        run: |
+          lipo -info dist/CopyToast.app/Contents/MacOS/CopyToast
+          codesign --verify --strict dist/CopyToast.app
+      - uses: actions/upload-artifact@v4
+        with:
+          name: CopyToast-dmg
+          path: dist/*.dmg
